@@ -1,0 +1,36 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment files
+.env
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Build and distribution
+dist/
+
+# Editor-specific
+.idea/
+.vscode/
+*.swp
+
+# OS generated files
+Thumbs.db
+
+# Dependencies
+yarn.lock
+yarn-error.log
+
+# Webpack
+build/
