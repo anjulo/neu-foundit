@@ -1,0 +1,8 @@
+// For VSCode to recognize the import statements a.k.a. intellisense
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6"
+  },
+  "exclude": ["node_modules"]
+}
