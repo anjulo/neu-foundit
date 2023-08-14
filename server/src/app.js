@@ -12,4 +12,4 @@ app.use(session({
   cookie: { secure: false }
 }))
 
-app.listen(process.env.PORT || 4000)
+export default app;
