@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
-const NavBar = () => {
+const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
       <div className="container-fluid">
@@ -32,4 +32,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar;
+export default Navbar;

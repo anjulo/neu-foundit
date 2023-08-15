@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import NavBar from './NavBar';
+import Navbar from './components/Navbar';
 
 function App() {
   console.log('App');
   return (
     <BrowserRouter>
       <div className="container-fluid">
-        <NavBar />
+        <Navbar />
       </div>
     </BrowserRouter>
   );
