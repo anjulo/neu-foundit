@@ -1,4 +1,4 @@
-import User from "../models/User"
+import User from "../models/User.js"
 
 const usersDao = {
   createUser: (username, password) => User.create({username, password}),
@@ -9,4 +9,4 @@ const usersDao = {
   findByCredentials: (credentials) => User.findOne(credentials)
 }
 
-export default userDao;
+export default usersDao;
