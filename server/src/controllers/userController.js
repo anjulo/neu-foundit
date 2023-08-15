@@ -10,8 +10,10 @@ const userController = (app) => {
 const registerUser = async (req, res) => {
   const {username, password} = req.body;
   try {
-    const user = await usersDao.createUser(username, password);
+    let user = await usersDao.createUser(username, password);
     req.session.user = user;
+    user = user.toObject();
+    delete user.password;
     res.status(201).json(user);
   } catch (e) {
     res.status(403).send(e.message);
