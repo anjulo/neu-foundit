@@ -10,7 +10,7 @@ const userController = (app) => {
 const registerUser = async (req, res) => {
   const {username, password} = req.body;
   try {
-    const user = await userDao.createUser(username, password);
+    const user = await usersDao.createUser(username, password);
     req.session.user = user;
     res.status(201).json(user);
   } catch (e) {
@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   const credentials = req.body;
   try {
-    const user = await userDao.findByCredentials(credentials);
+    const user = await usersDao.findByCredentials(credentials);
     req.session.user = user;
     res.status(201).send(user);
   } catch (e) {
