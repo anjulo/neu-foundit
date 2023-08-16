@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { getProfileThunk } from "../thunks/userThunks.js";
 
 const userSlice = createSlice({
   name: 'user',
@@ -9,7 +10,14 @@ const userSlice = createSlice({
   },
   reducers: {},
   extraReducers: {
-
+    [getProfileThunk.fullfilled]: (state, action) => {
+      state.currentUser = action.payload;
+      console.log(action.payload);
+      state.isLoading = false;
+    },
+    [getProfileThunk.pending]: (state, action) => {
+      state.isLoading = true;
+    },
   }
 })
 
