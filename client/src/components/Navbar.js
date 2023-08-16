@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css"
+import { useSelector } from '../../node_modules/react-redux/es/exports.js';
 
 const Navbar = () => {
   return (
@@ -20,15 +21,15 @@ const Navbar = () => {
             <a className="nav-link" href="#">About</a>
           </div>
         </div>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form className="d-flex" role="search">
+          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <button className="btn btn-outline-success" type="submit">Search</button>
         </form>
         <a className="ms-3"><i className="fa-solid fa-right-to-bracket"></i></a>
-        
+
       </div>
     </nav>
-    
+
   )
 }
 
