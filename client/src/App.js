@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar.js';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from "react-redux"; 
+import CurrentUser from './components/CurrentUser.js';
 import userReducer from './reducers/userReducer.js';
 
 
@@ -12,13 +13,14 @@ const store = configureStore({
   }
 })
 function App() {
-  console.log('App');
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <div className="container-fluid">
-          <Navbar />
-        </div>
+        <CurrentUser>
+          <div className="container-fluid">
+            <Navbar />
+          </div>
+        </CurrentUser>
       </BrowserRouter>
     </Provider>
   );
