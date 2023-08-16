@@ -1,8 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignInModal from '../auth/SignInModal.js';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+  const { currentUser } = useSelector(state => state.user)
   return (
     <div>
       <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
@@ -30,7 +32,10 @@ const Navbar = () => {
           </a>
         </div>
       </nav>
-      <SignInModal />
+      {
+        !currentUser &&
+        <SignInModal />
+      }
     </div>
 
   )

@@ -3,15 +3,15 @@ import userServices from "../services/userServices.js";
 
 const registerThunk = createAsyncThunk(
   'register',
-  async user => await userServices.register(user)
+  async user => await userServices.registerUser(user)
 )
 const loginThunk = createAsyncThunk(
   'login',
-  async user => await userServices.login(user)
+  async user => await userServices.loginUser(user)
 )
 const logoutThunk = createAsyncThunk(
   'logout',
-  async () => await userServices.logout()
+  async () => await userServices.logoutUser()
 )
 const getProfileThunk = createAsyncThunk(
   'getProfile',
