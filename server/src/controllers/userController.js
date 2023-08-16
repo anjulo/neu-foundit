@@ -1,4 +1,5 @@
-import usersDao from "../dao/usersDAO.js"
+import usersDao from "../dao/usersDao.js"
+
 
 const userController = (app) => {
   app.post('/api/register', registerUser);
@@ -8,37 +9,50 @@ const userController = (app) => {
 }
 
 const registerUser = async (req, res) => {
-  const {username, password} = req.body;
+  const { username, password } = req.body;
   try {
-    let user = await usersDao.createUser(username, password);
-    req.session.user = user;
-    user = user.toObject();
-    delete user.password;
-    res.status(201).json(user);
+    const existringUser = await userDao.findByUserName(username);
+    if (existringUser) {
+      res.status(409).json({ error: "User already exists" });
+      return;
+    }
+    let newUser = await usersDao.createUser(username, password);
+    newUser = newUser.toObject();
+    delete newUser.password;
+    req.session.user = newUser;
+    res.status(201).json(newUser); // created
   } catch (e) {
-    res.status(403).send(e.message);
+    res.status(500).json({ error: "Internal Server Error" })
   }
 }
 const loginUser = async (req, res) => {
   const credentials = req.body;
   try {
     const user = await usersDao.findByCredentials(credentials);
-    req.session.user = user;
-    res.status(201).send(user);
+    if (user) {
+      req.session.user = user;
+      res.status(200).json(user); // ok
+      return;
+    }
+    res.status(401).json({ error: "Invalid credentials" });
   } catch (e) {
-    res.status(400).send(e.message);
+    res.status(500).json({ error: "Internal Server Error" })
   }
 }
 const logoutUser = async (req, res) => {
-  req.session.destroy();
-  res.status(200).send('logged out');
+  try {
+    await req.session.destroy();
+    res.sendStatus(200);
+  } catch (e) {
+    res.status(500).json({ error: "Internal Server Error" })
+  }
 }
 // return loged in user
 const getProfile = async (req, res) => {
   if (req.session.user) {
-    res.send(req.session.user);
+    res.status(200).json(req.session.user);
   } else {
-    res.status(401).send('not logged in');
+    res.status(401).json({ error: "Not logged in" })
   }
 }
 
