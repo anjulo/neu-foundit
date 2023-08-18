@@ -49,10 +49,11 @@ const logoutUser = async (req, res) => {
 }
 // return loged in user
 const getProfile = async (req, res) => {
-  if (req.session.user) {
-    res.status(200).json(req.session.user);
-  } else {
-    res.status(401).json({ error: "Not logged in" })
+  try {
+    const user = req.session.user;
+    res.status(200).json(user);
+  } catch (e) {
+    res.status(500).json({ error: "Internal Server Error" })
   }
 }
 
