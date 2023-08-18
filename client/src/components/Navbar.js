@@ -1,10 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SignInModal from '../auth/SignInModal.js';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutThunk } from '../thunks/userThunks.js';
 
 const Navbar = () => {
   const { currentUser } = useSelector(state => state.user)
+  const dispatch = useDispatch();
   return (
     <div>
       <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
@@ -27,9 +28,30 @@ const Navbar = () => {
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button className="btn btn-outline-success" type="submit">Search</button>
           </form>
-          <a className="ms-3" data-bs-toggle="modal" data-bs-target="#signInModal">
-            <i className="fa-solid fa-right-to-bracket"></i>
-          </a>
+          {
+            !currentUser &&
+            <a className="ms-3" data-bs-toggle="modal" data-bs-target="#signInModal">
+              <i className="fa-solid fa-right-to-bracket"></i>
+            </a>
+          }
+          {
+            !currentUser ||
+            <div className="dropdown ms-3">
+              <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {currentUser.username}
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a className="dropdown-item" href="#">Profile</a></li>
+                <li><a className="dropdown-item" href="#">Settings</a></li>
+                <li><a className="dropdown-item" href="#"
+                  onClick={() => dispatch(logoutThunk())}>
+                  Log Out
+                </a>
+                </li>
+              </ul>
+            </div>
+          }
         </div>
       </nav>
     </div>
