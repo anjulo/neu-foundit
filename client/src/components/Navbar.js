@@ -32,10 +32,6 @@ const Navbar = () => {
           </a>
         </div>
       </nav>
-      {
-        !currentUser &&
-        <SignInModal />
-      }
     </div>
 
   )

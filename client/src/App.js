@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from "react-redux"; 
 import CurrentUser from './components/CurrentUser.js';
 import userReducer from './reducers/userReducer.js';
+import SignInModal from './auth/SignInModal.js';
 
 
 const store = configureStore({
@@ -19,6 +20,7 @@ function App() {
         <CurrentUser>
           <div className="container-fluid">
             <Navbar />
+            <SignInModal />
           </div>
         </CurrentUser>
       </BrowserRouter>
