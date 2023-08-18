@@ -13,10 +13,13 @@ const userSlice = createSlice({
     [getProfileThunk.pending]: (state, action) => {
       state.isLoading = true;
     },
-    [getProfileThunk.fullfilled]: (state, action) => {
+    [getProfileThunk.fulfilled]: (state, action) => {
       state.currentUser = action.payload;
-      console.log(action.payload);
       state.isLoading = false;
+    },
+    [getProfileThunk.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
     },
     [registerThunk.pending]: (state, action) => {
       state.isLoading = true;
@@ -26,7 +29,7 @@ const userSlice = createSlice({
       state.isLoading = false;
     },
     [registerThunk.rejected]: (state, action) => {
-      state.error = action.payload;
+      state.error = action.error.message;
       state.isLoading = false;
     },
     [loginThunk.pending]: (state, action) => {
@@ -37,7 +40,7 @@ const userSlice = createSlice({
       state.isLoading = false;
     },
     [loginThunk.rejected]: (state, action) => {
-      state.error = action.payload;
+      state.error = action.error.message
       state.isLoading = false;
     },
     [logoutThunk.pending]: (state, action) => {
@@ -48,7 +51,7 @@ const userSlice = createSlice({
       state.isLoading = false;
     },
     [logoutThunk.rejected]: (state, action) => {
-      state.error = action.payload;
+      state.error = action.error.message;
       state.isLoading = false;
     }
   }
