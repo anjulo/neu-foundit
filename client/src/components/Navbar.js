@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutThunk } from '../thunks/userThunks.js';
+import NEU_Logo from '../assets/images/neu_logo.jpeg';
 
 const Navbar = () => {
   const { currentUser } = useSelector(state => state.user)
@@ -10,7 +11,8 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#"><span className="fst-italic">foundit!</span></a>
+          <img src={NEU_Logo} alt="logo" width="25" height="25" className="me-2" />
+          <a className="navbar-brand text-success" href="#"><span className="fst-italic">foundit!</span></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
             aria-expanded="false" aria-label="Toggle navigation">
