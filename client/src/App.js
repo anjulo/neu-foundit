@@ -5,11 +5,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from "react-redux";
 import CurrentUser from './components/CurrentUser.js';
 import userReducer from './reducers/userReducer.js';
+import Header from 'components/Header.js';
+import SignInModal from './auth/SignInModal.js';
+import SignUpModal from './auth/SignUpModal.js';
 import Home from 'pages/Home.js';
 import Items from 'pages/Items.js';
 import About from 'pages/About.js';
 import Report from 'pages/Report.js';
-import Header from 'components/Header.js';
 import Footer from 'components/Footer.js';
 
 
@@ -24,6 +26,8 @@ function App() {
       <BrowserRouter>
         <CurrentUser>
           <Header />
+          <SignInModal />
+          <SignUpModal />
           <div className="main">
             <Routes>
               <Route path="/" element={<Home />} />
