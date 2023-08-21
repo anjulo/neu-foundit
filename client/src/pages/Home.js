@@ -13,10 +13,10 @@ const Home = () => {
         <img src={NEU_Hero} className="img-fluid" alt="Responsive image" style={{ height: '50%', width: '100%' }} />
       </div>
       <div className="d-flex justify-content-around mb-5">
-        <a href="#">
+        <a href="./reportlost">
           <img src={reportLost} />
         </a>
-        <a href="#">
+        <a href="./reportfound">
           <img src={reportFound} />
         </a>
       </div>

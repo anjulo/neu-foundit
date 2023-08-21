@@ -26,6 +26,19 @@ const Navbar = () => {
               <Link to="/" className={`nav-link ${lastPath==="" ? "active": ""}`} aria-current="page" href="#">Home</Link>
               <Link to="/items" className={`nav-link ${lastPath==="items" ? "active": ""}`} href="#">Items</Link>
               <Link to="/about" className={`nav-link ${lastPath==="about" ? "active": ""}`} href="#">About</Link>
+              <div className="nav-item dropdown">
+                <a
+                  className={`nav-link dropdown-toggle ${lastPath==="reportlost" || lastPath==="reportfound" ? "active" : ""}`}
+                  href="#" id="reportDropdown" role="button" 
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Report
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="reportDropdown">
+                  <li><Link to="/reportlost" className="dropdown-item" href="#">Lost</Link></li>
+                  <li><Link to="/reportfound" className="dropdown-item" href="#">Found</Link></li>
+                </ul>
+
+              </div>
             </div>
           </div>
           <form className="d-flex" role="search">
@@ -41,11 +54,11 @@ const Navbar = () => {
           {
             !currentUser ||
             <div className="dropdown ms-3">
-              <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              <a className="btn btn-info dropdown-toggle" href="#" role="button" id="user-dropdown"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 {currentUser.username}
               </a>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <ul className="dropdown-menu" aria-labelledby="user-dropdown">
                 <li><a className="dropdown-item" href="#">Profile</a></li>
                 <li><a className="dropdown-item" href="#">Settings</a></li>
                 <li><a className="dropdown-item" href="#"

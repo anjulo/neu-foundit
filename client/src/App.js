@@ -11,8 +11,10 @@ import SignUpModal from './auth/SignUpModal.js';
 import Home from 'pages/Home.js';
 import Items from 'pages/Items.js';
 import About from 'pages/About.js';
-import Report from 'pages/Report.js';
 import Footer from 'components/Footer.js';
+import ReportLost from 'pages/ReportLost.js';
+import ReportFound from 'pages/ReportFound.js';
+
 
 
 const store = configureStore({
@@ -32,7 +34,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/items" element={<Items />} />
-              <Route path="/report" element={<Report />} />
+              <Route path="/reportlost" element={<ReportLost /> }/>
+              <Route path="/reportfound" element={<ReportFound /> }/>  
               <Route path="/about" element={<About />} />
             </Routes>
           </div>
