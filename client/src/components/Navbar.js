@@ -2,14 +2,17 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutThunk } from '../thunks/userThunks.js';
+import { Link, useLocation } from 'react-router-dom';
 import NEU_Logo from '../assets/images/neu_logo.jpeg';
 
 const Navbar = () => {
   const { currentUser } = useSelector(state => state.user)
+  const { pathname } = useLocation()
+  const lastPath = pathname.split('/').at(-1);
   const dispatch = useDispatch();
   return (
     <div>
-      <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <img src={NEU_Logo} alt="logo" width="25" height="25" className="me-2" />
           <a className="navbar-brand text-success" href="#"><span className="fst-italic">foundit!</span></a>
@@ -20,10 +23,9 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link" aria-current="page" href="#">Lost Items</a>
-              <a className="nav-link" href="#">Found Items</a>
-              <a className="nav-link" href="#">Contact</a>
-              <a className="nav-link" href="#">About</a>
+              <Link to="/" className={`nav-link ${lastPath==="" ? "active": ""}`} aria-current="page" href="#">Home</Link>
+              <Link to="/items" className={`nav-link ${lastPath==="items" ? "active": ""}`} href="#">Items</Link>
+              <Link to="/about" className={`nav-link ${lastPath==="about" ? "active": ""}`} href="#">About</Link>
             </div>
           </div>
           <form className="d-flex" role="search">
