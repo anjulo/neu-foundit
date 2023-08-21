@@ -1,6 +1,5 @@
 import React from 'react';
-// import Logo from '../assets/neu_logo_black.jpeg';
-import Logo from '../assets/images/krentzman_quad.jpeg';
+import NEU_Hero from '../assets/images/krentzman_quad.jpeg';
 import reportLost from '../assets/images/report_lost.png';
 import reportFound from '../assets/images/report_found.png';
 
@@ -11,7 +10,7 @@ const Home = () => {
   return (
     <div className="">
       <div className="row d-flex justify-content-center mb-5">
-        <img src={Logo} className="img-fluid" alt="Responsive image" style={{ height: '50%', width: '100%' }} />
+        <img src={NEU_Hero} className="img-fluid" alt="Responsive image" style={{ height: '50%', width: '100%' }} />
       </div>
       <div className="d-flex justify-content-around mb-5">
         <a href="#">
