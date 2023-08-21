@@ -11,7 +11,7 @@ const userController = (app) => {
 const registerUser = async (req, res) => {
   const { username, password } = req.body;
   try {
-    const existringUser = await userDao.findByUserName(username);
+    const existringUser = await usersDao.findByUserName(username);
     if (existringUser) {
       res.status(409).json({ error: "User already exists" });
       return;
