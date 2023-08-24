@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { useDispatch } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { createFoundItemThunk } from 'thunks/itemsThunks.js';
 
 const ReportFound = () => {
-  const [formData, setFormData] = useState({
-    itemName: '',
+  const [itemData, setItemData] = useState({
+    name: '',
     description: '',
     location: '',
-    date: '',
+    foundDate: '',
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission (e.g., send data to server)
-    console.log('Form submitted:', formData);
-    // You can add an API call here to send the report data to the server.
-  };
-
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setItemData({
+      ...itemData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createFoundItemThunk(itemData))
   };
 
   return (
@@ -32,9 +33,9 @@ const ReportFound = () => {
           <input
             type="text"
             className="form-control"
-            id="itemName"
-            name="itemName"
-            value={formData.itemName}
+            id="name"
+            name="name"
+            value={itemData.name}
             onChange={handleChange}
             required
           />
@@ -45,7 +46,7 @@ const ReportFound = () => {
             className="form-control"
             id="description"
             name="description"
-            value={formData.description}
+            value={itemData.description}
             onChange={handleChange}
             required
           ></textarea>
@@ -57,7 +58,7 @@ const ReportFound = () => {
             className="form-control"
             id="location"
             name="location"
-            value={formData.location}
+            value={itemData.location}
             onChange={handleChange}
             required
           />
@@ -67,9 +68,9 @@ const ReportFound = () => {
           <input
             type="date"
             className="form-control"
-            id="date"
-            name="date"
-            value={formData.date}
+            id="foundDate"
+            name="foundDate"
+            value={itemData.foundDate}
             onChange={handleChange}
             required
           />

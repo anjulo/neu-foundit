@@ -14,14 +14,14 @@ import About from 'pages/About.js';
 import Footer from 'components/Footer.js';
 import ReportLost from 'pages/ReportLost.js';
 import ReportFound from 'pages/ReportFound.js';
-import lostItemsReducer from 'reducers/lostItemsReducer.js';
+import itemsReducer from 'reducers/itemsReducer.js';
 
 
 
 const store = configureStore({
-  reducer : {
+  reducer: {
     user: userReducer,
-    lostItems: lostItemsReducer
+    items: itemsReducer,
   }
 })
 function App() {

@@ -6,7 +6,7 @@ const api = axios.create({
 });
 
 
-const lostItemsServices = {
+const itemsServices = {
   createLostItem: async (item) => {
     try {
       const res = await api.post(`${REACT_APP_BASE_URL}/api/lost`, item);
@@ -23,14 +23,22 @@ const lostItemsServices = {
       throw e.data;
     }
   },
-  // logoutUser: async () => {
-  //   try{
-  //     const res = await api.post(`${REACT_APP_BASE_URL}/api/logout`);
-  //     return res.data;
-  //   } catch (e) {
-  //     throw e.data;
-  //   }
-  // },
+  createFoundItem: async (item) => {
+    try {
+      const res = await api.post(`${REACT_APP_BASE_URL}/api/found`, item);
+      return res.data;
+    } catch (e) {
+      throw e.data;
+    }
+  },
+  getFoundItems: async () => {
+    try {
+      const res = await api.get(`${REACT_APP_BASE_URL}/api/found`);
+      return res.data;
+    } catch (e) {
+      throw e.data;
+    }
+  },
 }
 
-export default lostItemsServices;
+export default itemsServices;
