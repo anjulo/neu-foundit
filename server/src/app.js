@@ -4,6 +4,7 @@ import session from 'express-session';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userController from './controllers/userController.js';
+import lostItemsController from './controllers/lostItemController.js';
 
 dotenv.config()
 mongoose.connect(process.env.DB_CONNECTION_STRING)
@@ -22,5 +23,6 @@ app.use(session({
 }))
 
 userController(app)
+lostItemsController(app)
 
 export default app;
