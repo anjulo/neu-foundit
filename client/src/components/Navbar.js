@@ -35,7 +35,7 @@ const Navbar = () => {
                 </a>
                 <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="report-dropdown">
                   <Link to="/reportlost" className={`dropdown-item ${lastPath==="reportlost" ? "active": ""}`} href="#">Lost</Link>
-                  <hr class="dropdown-divider"></hr>
+                  <hr className="dropdown-divider"></hr>
                   <Link to="/reportfound" className={`dropdown-item ${lastPath==="reportfound" ? "active": ""}`} href="#">Found</Link>
                 </div>
 
@@ -48,9 +48,9 @@ const Navbar = () => {
           </form>
           {
             !currentUser &&
-            <a className="ms-3" data-bs-toggle="modal" data-bs-target="#signInModal">
+            <Link className="ms-3"to='/auth'>
               <i className="fa-solid fa-right-to-bracket"></i>
-            </a>
+            </Link>
           }
           {
             !currentUser ||
