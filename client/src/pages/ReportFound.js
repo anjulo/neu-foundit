@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { createFoundItemThunk } from 'thunks/itemsThunks.js';
 
 const ReportFound = () => {

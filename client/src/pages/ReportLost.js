@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { useDispatch } from 'react-redux';
 import { createLostItemThunk } from 'thunks/itemsThunks.js';
 

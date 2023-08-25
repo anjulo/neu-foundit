@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import "@fortawesome/fontawesome-free/css/all.min.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal } from 'bootstrap';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { registerThunk } from '../thunks/userThunks.js';
 import { useDispatch, useSelector } from 'react-redux';
 

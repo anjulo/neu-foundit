@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutThunk } from '../thunks/userThunks.js';
 import { Link, useLocation } from 'react-router-dom';
@@ -11,11 +10,11 @@ const Navbar = () => {
   const lastPath = pathname.split('/').at(-1);
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className="sticky-top">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <img src={NEU_Logo} alt="logo" width="25" height="25" className="me-2" />
-          <a className="navbar-brand text-success" href="#"><span className="fst-italic">foundit!</span></a>
+          <Link to="/" className="navbar-brand text-success" href="#"><span className="fst-italic">foundit!</span></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +27,7 @@ const Navbar = () => {
               <Link to="/about" className={`nav-link ${lastPath==="about" ? "active": ""}`} href="#">About</Link>
               <div className="nav-item dropdown">
                 <a
-                  className={`nav-link dropdown-toggle ${lastPath==="reportlost" || lastPath==="reportfound" ? "active" : ""}`}
+                  className={`nav-link dropdown-toggle ${lastPath.startsWith("report") ? "active" : ""}`}
                   href="#" id="reportDropdown" role="button" 
                   data-bs-toggle="dropdown" aria-expanded="false">
                   Report
