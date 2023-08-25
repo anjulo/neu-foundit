@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/styles/Navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutThunk } from '../thunks/userThunks.js';
 import { Link, useLocation } from 'react-router-dom';
@@ -25,17 +26,18 @@ const Navbar = () => {
               <Link to="/" className={`nav-link ${lastPath==="" ? "active": ""}`} aria-current="page" href="#">Home</Link>
               <Link to="/items" className={`nav-link ${lastPath==="items" ? "active": ""}`} href="#">Items</Link>
               <Link to="/about" className={`nav-link ${lastPath==="about" ? "active": ""}`} href="#">About</Link>
-              <div className="nav-item dropdown">
+              <div className="dropdown ">
                 <a
                   className={`nav-link dropdown-toggle ${lastPath.startsWith("report") ? "active" : ""}`}
-                  href="#" id="reportDropdown" role="button" 
+                  href="#" id="report-dropdown" role="button" 
                   data-bs-toggle="dropdown" aria-expanded="false">
                   Report
                 </a>
-                <ul className="dropdown-menu" aria-labelledby="reportDropdown">
-                  <li><Link to="/reportlost" className="dropdown-item" href="#">Lost</Link></li>
-                  <li><Link to="/reportfound" className="dropdown-item" href="#">Found</Link></li>
-                </ul>
+                <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="report-dropdown">
+                  <Link to="/reportlost" className={`dropdown-item ${lastPath==="reportlost" ? "active": ""}`} href="#">Lost</Link>
+                  <hr class="dropdown-divider"></hr>
+                  <Link to="/reportfound" className={`dropdown-item ${lastPath==="reportfound" ? "active": ""}`} href="#">Found</Link>
+                </div>
 
               </div>
             </div>
@@ -57,15 +59,13 @@ const Navbar = () => {
                 data-bs-toggle="dropdown" aria-expanded="false">
                 {currentUser.username}
               </a>
-              <ul className="dropdown-menu" aria-labelledby="user-dropdown">
-                <li><a className="dropdown-item" href="#">Profile</a></li>
-                <li><a className="dropdown-item" href="#">Settings</a></li>
-                <li><a className="dropdown-item" href="#"
+              <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
+                <a className="dropdown-item" href="#">Profile</a>
+                <a className="dropdown-item" href="#"
                   onClick={() => dispatch(logoutThunk())}>
                   Log Out
                 </a>
-                </li>
-              </ul>
+              </div>
             </div>
           }
         </div>
