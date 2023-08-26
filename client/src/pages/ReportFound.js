@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createFoundItemThunk } from 'thunks/itemsThunks.js';
+import { useNavigate } from 'react-router-dom';
 
 const ReportFound = () => {
   const [itemData, setItemData] = useState({
@@ -18,9 +19,11 @@ const ReportFound = () => {
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createFoundItemThunk(itemData))
+    dispatch(createFoundItemThunk(itemData));
+    navigate('/items');
   };
 
   return (

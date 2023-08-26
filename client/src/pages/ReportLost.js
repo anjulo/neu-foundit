@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createLostItemThunk } from 'thunks/itemsThunks.js';
+import { useNavigate } from 'react-router-dom';
 
 const ReportLost = () => {
   const [itemData, setItemData] = useState({
@@ -17,9 +18,11 @@ const ReportLost = () => {
     });
   };
   const dispatch = useDispatch()
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createLostItemThunk(itemData))
+    dispatch(createLostItemThunk(itemData));
+    navigate('/items');
   };
 
   return (
