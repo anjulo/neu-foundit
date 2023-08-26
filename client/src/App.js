@@ -14,6 +14,7 @@ import ReportFound from 'pages/ReportFound.js';
 import itemsReducer from 'reducers/itemsReducer.js';
 import Navbar from 'components/Navbar.js';
 import Auth from 'pages/Auth.js';
+import ProtectedRoutes from 'auth/ProtectedRoutes.js';
 
 
 
@@ -33,8 +34,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/items" element={<Items />} />
-              <Route path="/reportlost" element={<ReportLost />} />
-              <Route path="/reportfound" element={<ReportFound />} />
+              <Route element={<ProtectedRoutes />}>
+                <Route path="/reportlost" element={<ReportLost />} />
+                <Route path="/reportfound" element={<ReportFound />} />
+              </Route>
               <Route path="/about" element={<About />} />
               <Route path="/auth" element={<Auth />} />
             </Routes>
