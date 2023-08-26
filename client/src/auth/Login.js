@@ -19,22 +19,22 @@ const Login = () => {
         <h2 className="card-title">Log In</h2>
         <form>
           <div className="mb-3">
-            <label htmlFor="username" className="form-label">Username</label>
+            <label htmlFor="loginUsername" className="form-label">Username</label>
             <input
               type="text"
               className="form-control"
-              id="username"
-              onChange={(e) => setLoginUsername(e.target.value)}
+              id="loginUsername"
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="loginPassword" className="form-label">Password</label>
             <input
-              type="password"
+              type="loginPassword"
               className="form-control"
               id="password"
-              onChange={(e) => setLoginPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
